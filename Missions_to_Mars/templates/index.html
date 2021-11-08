@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Project</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class = "jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button"> Scrape New Data</a></p>
+    </div>
+
+    <h2>Latest Mars News </h2>
+    <h4>  {{mongo_dictionary.news_title }} </h4>
+    <p> {{ mongo_dictionary.news_p }}</p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2> Featured Mars Image </h2>
+          <img src ={{mongo_dictionary.featured_image_url}}>
+        </div>
+        <div class="col">
+          <h3> Mars Facts</h3>
+          <p> {{mongo_dictionary.html_table | safe}}</p>
+        </div>
+      </div>
+    </div>
+
+    <h2> Mars Hemispheres </h2>
+    <div class="card-group">
+      {% for item in mongo_dictionary.final_image_urls %}
+        <div class="card">
+          <img src={{item}} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Hemisphere Image</h5>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+</body>
+</html>
+
+
+
